@@ -11,14 +11,14 @@ If you are not on the programming team, but would like to make some changes, the
 
 ##Clone Repository##
 First log into your github account. If you do not have one, [sign up here](https://github.com/join).
+
 Next, go to [the github repository](https://github.com/GoldenGears/RobotCode2014-2015) and click on the "Fork" button in the top right hand corner of the screen.
 
-Now, open up a Unix terminal (cygwin if using Windows)
-In your terminal, type:
+Now, open up a Unix terminal (cygwin if using Windows) and in the field, type:
 
 `cd ~/.ssh && ssh-keygen`
 
-Then hit enter and type the next lines:
+Then hit enter and type:
 
 ###Linux###
 `cat id_rsa.pub | xclip`
