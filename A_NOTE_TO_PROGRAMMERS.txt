@@ -1,0 +1,21 @@
+To all people who will be editing the code, please remember to format all source files by listing the date of your commit, your name, and the changes you have made (The commit message).
+
+Format:
+
+//*********************
+// Golden Gears Robotics
+// [Date of file creation]
+// [Name of file without extension]
+//*********************
+
+// [month]-[day]-[year]:[Name of programmer] - [commit string]
+
+EX:
+
+//**********************
+// Golden Gears Robotics
+// 11/6/14
+// A note to programmers
+//**********************
+
+// 11-6-14 : Tyler Robbins - Created a file to tell programmers what to put in the header of all source files.
