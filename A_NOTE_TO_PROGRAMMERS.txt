@@ -1,5 +1,7 @@
 To all people who will be editing the code, please remember to format all source files by listing the date of your commit, your name, and the changes you have made (The commit message).
 
+However, to save room, only do this for major changes (i.e: adding a new method, changing multiple important variables etc.)
+
 Format:
 
 //*********************
