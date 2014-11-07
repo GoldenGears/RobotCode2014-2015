@@ -13,6 +13,9 @@ namespace CONFIG{
 	namespace HARDWARE{
 		// All hardware ports go here
 		//    i.e: motors
+
+		const int motorL;
+		const int motorR;
 	}
 
 	namespace INPUT{
