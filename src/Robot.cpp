@@ -5,11 +5,19 @@
 //************************
 
 //11-6-14 - Tyler Robbins - Added header. Added some new empty methods. Added more comments. Removed old commented out code.
+//11-14-14 - Tyler Robbins - Added some more include statements. Defined a new function. Removed unused attribute.
 
 #include "WPILib.h"
 
+#include "HardwareMap.h"
+#include "OI.h"
+
+const char* str_direction(Direction dir){
+	return ((dir==Direction::UP) ? "UP":"DOWN");
+}
+
 Robot::Robot(void)
-	: stick(1)
+	:
 
 	/*Initialize all necessary variables*/
 	{ }
