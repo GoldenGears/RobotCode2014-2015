@@ -5,7 +5,7 @@
 //*******************
 
 // 11-6-14 - Tyler Robbins - Added a header. Added more imports. Added define statements. Defined more methods and variables.
-// 11-13-14 - Tyler Robbins - 
+// 11-13-14 - Tyler Robbins - Added an enumeration. Defined a new function.
 
 #include "WPILib.h"
 #include "RobotBase.h"
