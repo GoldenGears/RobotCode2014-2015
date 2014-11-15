@@ -5,6 +5,7 @@
 //*******************
 
 // 11-6-14 - Tyler Robbins - Added a header. Added more imports. Added define statements. Defined more methods and variables.
+// 11-13-14 - Tyler Robbins - 
 
 #include "WPILib.h"
 #include "RobotBase.h"
@@ -12,6 +13,10 @@
 
 #ifndef _ROBOT_H_
 #define _ROBOT_H_
+
+enum class Direction {UP,DOWN};
+
+const char* str_direction(Direction dir);
 
 class Robot : public IterativeRobot {
 	Joystick stick;
