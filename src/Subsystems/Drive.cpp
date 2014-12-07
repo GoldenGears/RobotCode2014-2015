@@ -5,24 +5,25 @@
 //*******************
 
 // 11-23-14 - Tyler Robbins - Created a file that declares the Drive class and its methods.
+// 12-6-14 - Tyler Robbins - Removed includes for Joystick and Talon. Changed robot_drive initialization. Specified InitDefaultCommand and drive as void.
 
 #include "Drive.h"
 
 #include "RobotDrive.h"
-#include "Joystick.h"
-#include "Talon.h"
+// #include "Joystick.h"
+// #include "Talon.h"
 
 #include "../Commands/BackgroundDrive.h"
 #include "../Robot.h"
 
-Drive::Drive(Talon *front_l, Talon *front_r,
-	Talon back_l, Talon back_r, Joystick *joy)
+Drive::Drive()
 	: Subsystem("Drive"),
-	robot_drive(front_l,
-		back_l,
-		front_r,
-		back_r),
-	m_def_command(this,joy){
+	robot_drive(&Robot::hw_map()->left_1,
+				&Robot::hw_map()->left_3,
+				&Robot::hw_map()->right_1,
+				&Robot::hw_map()->right_3)
+	,m_def_command(this,&Robot::oi()->joy)
+	{
 
 	robot_drive.SetExpiration(0.5);
 
@@ -36,12 +37,13 @@ Drive::Drive(Talon *front_l, Talon *front_r,
 
 Drive::~Drive() {}
 
-Drive::InitDefaultCommand(){
+void Drive::InitDefaultCommand(){
 	// Background drive should be run when nothing else is using this subsystem.
 	SetDefaultCommand(&m_def_command);
+	// SetDefaultCommand(new BackgroundDrive(Robot::drive()));
 }
 
-Drive::drive(float x, float y, float turn){
+void Drive::drive(float x, float y, float turn){
 	// y is used so that when we push the joystick forwards, the robot moves forwards.
 	// We should probably add code to use different driving methods depending on driver preference, but this should be good enough for now.
 	robot_drive.ArcadeDrive(y,turn); 
