@@ -20,7 +20,7 @@ class WheelMotorSpin : public Command {
 
 	void Initialize() override;
 	void Execute() override;
-	bool isFinished() override;
+	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
 
