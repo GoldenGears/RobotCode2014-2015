@@ -5,6 +5,7 @@
 //************************
 
 //11-13-14 - Tyler Robbins - Created a OI.cpp file to define all input objects in OI.h
+//12-6-14 - Tyler Robbins - Added missing semicolons. Fixed member initializer list.
 
 #include "OI.h"
 
@@ -14,9 +15,9 @@
 #include "Commands/WheelMotorSpin.h" // <- This still needs to be added
 
 OI::OI()
-	: joystick(CONFIG::INPUT::joystick1),
-	wheelBackward(&joystick,CONFIG::INPUT::bBackward),
-	wheelForward(&joystick,CONFIG::INPUT::bForward)
+	: joy(CONFIG::INPUT::joystick1),
+	wheelBackward(&joy,CONFIG::INPUT::bBackward),
+	wheelForward(&joy,CONFIG::INPUT::bForward)
 	{ }
 
 OI::~OI(){ }
@@ -24,8 +25,7 @@ OI::~OI(){ }
 void OI::init(){
 	// Wire buttons, joysticks, and SmartDashboard controls to commands
 
-	//TODO: Add WheelMotorSpin class
-	wheelForward.whileHeld(new WheelMotorSpin(Direction::UP))
-	wheelBackward.whileHeld(new WheelMotorSpin(Direction::DOWN))
+	wheelForward.WhileHeld(new WheelMotorSpin(Direction::UP));
+	wheelBackward.WhileHeld(new WheelMotorSpin(Direction::DOWN));
 
 }
