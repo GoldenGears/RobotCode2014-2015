@@ -8,7 +8,7 @@
 // UDP - Internet protocol that broadcasts data and doesn't wait for a response.
 //*********************
 
-// 12-2-14 - Tyler Robbins - Created a file to define logging macros
+// 12-2-14 - Tyler Robbins - Created a file to define logging macros to send messages back to the driver station.
 
 #ifndef _LOGGING_H_
 #define _LOGGING_H_
