@@ -35,7 +35,7 @@ public:
 private:
 	RobotDrive robot_drive;
 
-	const BackgroundDrive *m_def_command;
+	const BackgroundDrive m_def_command;
 };
 
 #endif
