@@ -5,6 +5,7 @@
 //*******************
 
 // 11-22-14 - Tyler Robbins - Created a file that declares the MotorSubsystem class and its methods.
+// 12-11-14 - Tyler Robbins - Specified all methods (bar constructor/deconstructor) as void.
 
 #include "MotorSubsystem.h"
 
@@ -24,7 +25,7 @@ MotorSubsystem::MotorSubsystem(const char* name, SpeedController* motor, float p
 
 MotorSubsystem::~MotorSubsystem(){}
 
-MotorSubsystem::move(Direction dir){
+void MotorSubsystem::move(Direction dir){
 	if (dir == Direction::UP)
 		move(m_power_up);
 	else if(dir == Direction::DOWN)
@@ -33,10 +34,10 @@ MotorSubsystem::move(Direction dir){
 		stop();
 }
 
-MotorSubsystem::move(float power){
+void MotorSubsystem::move(float power){
 	m_motor->Set(power);
 }
 
-MotorSubsystem::stop(){
+void MotorSubsystem::stop(){
 	move(0.0);
 }
