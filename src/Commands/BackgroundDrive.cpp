@@ -6,6 +6,7 @@
 
 // 11-23-14 - Tyler Robbins - Created a file that declares the BackgroundDrive class and its methods.
 // 12-6-14 - Tyler Robbins - Added new include and forward class declaration. Constructor now only accepts one parameter. Specified the type of methods. joy is now gotten directly from Robot::oi().
+// 12-11-14 - Tyler Robbins - Fixed method override of IsFinished(). Fixed constructor. Added more comments.
 
 #include "BackgroundDrive.h"
 #include "Joystick.h"
@@ -15,15 +16,12 @@
 
 class Drive;
 
-// BackgroundDrive::BackgroundDrive(Drive* drive, Joystick *joy)
-// BackgroundDrive::BackgroundDrive()
-BackgroundDrive::BackgroundDrive(Drive* drive)
+BackgroundDrive::BackgroundDrive(Drive* drive, Joystick *joy)
 	: Command("BackgroundDrive")
 	,m_drive(drive)
-	// ,m_joy(joy) {
+	,m_joy(joy)
 	{
 		Requires(drive);
-		// Requires(Robot::drive());
 }
 
 BackgroundDrive::~BackgroundDrive(){}
@@ -41,7 +39,7 @@ void BackgroundDrive::Execute(){
 	throttle = joy.GetTwist(); // We should test this just to be sure though.
 
 	// Add 1 to shift the values and then divide by 2 to scale down
-	throttle = (-throttle + 1.0)/2.0; // Note: Not sure why this is necessary. Should contact Philip or Matt and ask them.
+	throttle = (-throttle + 1.0)/2.0; // This is done to make the throttle values go from 0 to 1 instead of -1 to 1. This makes it easier to understand what the values do.
 
 	// In case any values need to be inverted, simply un-comment the inversion.
 	// x = -x;
@@ -59,7 +57,7 @@ void BackgroundDrive::Execute(){
 	// Robot::drive()
 }
 
-bool BackgroundDrive::isFinished(){
+bool BackgroundDrive::IsFinished(){
 	return false;
 }
 
