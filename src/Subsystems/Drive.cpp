@@ -6,6 +6,7 @@
 
 // 11-23-14 - Tyler Robbins - Created a file that declares the Drive class and its methods.
 // 12-6-14 - Tyler Robbins - Removed includes for Joystick and Talon. Changed robot_drive initialization. Specified InitDefaultCommand and drive as void.
+// 12-11-14 - Tyler Robbins - Fixed constructor definition. Changed SetDefaultCommand() call by passing in a pointer rather than a dereferenced pointer.
 
 #include "Drive.h"
 
@@ -16,13 +17,16 @@
 #include "../Commands/BackgroundDrive.h"
 #include "../Robot.h"
 
-Drive::Drive()
+Drive::Drive(Talon *left_1, Talon *left_3, 
+	Talon *right_1, Talon *right_3,
+	Joystick *joy)
 	: Subsystem("Drive"),
-	robot_drive(&Robot::hw_map()->left_1,
-				&Robot::hw_map()->left_3,
-				&Robot::hw_map()->right_1,
-				&Robot::hw_map()->right_3)
-	,m_def_command(this,&Robot::oi()->joy)
+	robot_drive(left_1,
+				left_3,
+				right_1,
+				right_3)
+	
+	,m_def_command(new BackgroundDrive(this,joy))
 	{
 
 	robot_drive.SetExpiration(0.5);
@@ -39,7 +43,7 @@ Drive::~Drive() {}
 
 void Drive::InitDefaultCommand(){
 	// Background drive should be run when nothing else is using this subsystem.
-	SetDefaultCommand(&m_def_command);
+	SetDefaultCommand(m_def_command);
 	// SetDefaultCommand(new BackgroundDrive(Robot::drive()));
 }
 
