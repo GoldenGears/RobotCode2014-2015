@@ -8,6 +8,7 @@
 //11-14-14 - Tyler Robbins - Added some more include statements. Defined a new function. Removed unused attribute.
 //11-23-14 - Tyler Robbins - Added some stuff to the destructor. Added some stuff to the member initialization list in the constructor.
 //12-6-14 - Tyler Robbins - Added more includes. Removed void parameter from methods. Added some new methods. Added content to TeleopPeriodic method.
+//12-11-14 - Tyler Robbins - Fixed the declaration of Drive.
 
 #include "Robot.h"
 
@@ -46,14 +47,12 @@ void Robot::RobotInit(){
 	m_hw_map = 	new HardwareMap();
 	m_oi = 		new OI();
 
-	// m_drive = 	new Drive(&m_hw_map->left_1,
-	// 	&m_hw_map->left_2,
-	// 	&m_hw_map->left_3,
-	// 	&m_hw_map->right_1,
-	// 	&m_hw_map->right_2,
-	// 	&m_hw_map->right_3);
-
-	m_drive = new Drive();
+	m_drive = 	new Drive(&m_hw_map->left_1
+		,&m_hw_map->left_3
+		,&m_hw_map->right_1
+		,&m_hw_map->right_3
+		,&m_oi->joy
+		);
 
 	// Call initialization methods after everything has been constructed.
 	m_hw_map->init();
